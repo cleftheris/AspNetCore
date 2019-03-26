@@ -63,12 +63,6 @@ namespace Microsoft.AspNetCore.Components
         public CascadingParameterAttribute() { }
         public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
-    public partial class CascadingValue<T> : Microsoft.AspNetCore.Components.IComponent
-    {
-        public CascadingValue() { }
-        public void Configure(Microsoft.AspNetCore.Components.RenderHandle renderHandle) { }
-        public System.Threading.Tasks.Task SetParametersAsync(Microsoft.AspNetCore.Components.ParameterCollection parameters) { throw null; }
-    }
     public abstract partial class ComponentBase : Microsoft.AspNetCore.Components.IComponent, Microsoft.AspNetCore.Components.IHandleAfterRender, Microsoft.AspNetCore.Components.IHandleEvent
     {
         public const string BuildRenderTreeMethodName = "BuildRenderTree";
@@ -657,6 +651,18 @@ namespace Microsoft.AspNetCore.Components.Forms
     public partial class EditForm : Microsoft.AspNetCore.Components.ComponentBase
     {
         public EditForm() { }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext> ChildContent { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public Microsoft.AspNetCore.Components.Forms.EditContext EditContext { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public object Model { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext> OnInvalidSubmit { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext> OnSubmit { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext> OnValidSubmit { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.RenderTree.RenderTreeBuilder builder) { }
         protected override void OnParametersSet() { }
     }
@@ -680,7 +686,7 @@ namespace Microsoft.AspNetCore.Components.Forms
     {
         protected InputBase() { }
         [Microsoft.AspNetCore.Components.ParameterAttribute]
-        protected string Class { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Class { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected string CssClass { get { throw null; } }
         protected T CurrentValue { get { throw null; } set { } }
         protected string CurrentValueAsString { get { throw null; } set { } }
@@ -688,7 +694,13 @@ namespace Microsoft.AspNetCore.Components.Forms
         protected string FieldClass { get { throw null; } }
         protected Microsoft.AspNetCore.Components.Forms.FieldIdentifier FieldIdentifier { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         [Microsoft.AspNetCore.Components.ParameterAttribute]
-        protected string Id { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        public string Id { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public T Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public Microsoft.AspNetCore.Components.EventCallback<T> ValueChanged { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public System.Linq.Expressions.Expression<System.Func<T>> ValueExpression { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected virtual string FormatValueAsString(T value) { throw null; }
         public override System.Threading.Tasks.Task SetParametersAsync(Microsoft.AspNetCore.Components.ParameterCollection parameters) { throw null; }
         protected abstract bool TryParseValueFromString(string value, out T result, out string validationErrorMessage);
@@ -702,6 +714,8 @@ namespace Microsoft.AspNetCore.Components.Forms
     public partial class InputDate<T> : Microsoft.AspNetCore.Components.Forms.InputBase<T>
     {
         public InputDate() { }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public string ParsingErrorMessage { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.RenderTree.RenderTreeBuilder builder) { }
         protected override string FormatValueAsString(T value) { throw null; }
         protected override bool TryParseValueFromString(string value, out T result, out string validationErrorMessage) { throw null; }
@@ -709,12 +723,16 @@ namespace Microsoft.AspNetCore.Components.Forms
     public partial class InputNumber<T> : Microsoft.AspNetCore.Components.Forms.InputBase<T>
     {
         public InputNumber() { }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public string ParsingErrorMessage { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.RenderTree.RenderTreeBuilder builder) { }
         protected override bool TryParseValueFromString(string value, out T result, out string validationErrorMessage) { throw null; }
     }
     public partial class InputSelect<T> : Microsoft.AspNetCore.Components.Forms.InputBase<T>
     {
         public InputSelect() { }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public Microsoft.AspNetCore.Components.RenderFragment ChildContent { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.RenderTree.RenderTreeBuilder builder) { }
         protected override bool TryParseValueFromString(string value, out T result, out string validationErrorMessage) { throw null; }
     }
@@ -749,6 +767,8 @@ namespace Microsoft.AspNetCore.Components.Forms
     public partial class ValidationMessage<T> : Microsoft.AspNetCore.Components.ComponentBase, System.IDisposable
     {
         public ValidationMessage() { }
+        [Microsoft.AspNetCore.Components.ParameterAttribute]
+        public System.Linq.Expressions.Expression<System.Func<T>> For { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.RenderTree.RenderTreeBuilder builder) { }
         protected override void OnParametersSet() { }
         void System.IDisposable.Dispose() { }
@@ -782,12 +802,6 @@ namespace Microsoft.AspNetCore.Components.Layouts
         protected LayoutComponentBase() { }
         [Microsoft.AspNetCore.Components.ParameterAttribute]
         protected Microsoft.AspNetCore.Components.RenderFragment Body { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { throw null; } }
-    }
-    public partial class LayoutDisplay : Microsoft.AspNetCore.Components.IComponent
-    {
-        public LayoutDisplay() { }
-        public void Configure(Microsoft.AspNetCore.Components.RenderHandle renderHandle) { }
-        public System.Threading.Tasks.Task SetParametersAsync(Microsoft.AspNetCore.Components.ParameterCollection parameters) { throw null; }
     }
 }
 namespace Microsoft.AspNetCore.Components.Rendering
@@ -920,25 +934,10 @@ namespace Microsoft.AspNetCore.Components.RenderTree
 }
 namespace Microsoft.AspNetCore.Components.Routing
 {
-    public partial class NavLink : Microsoft.AspNetCore.Components.IComponent, System.IDisposable
-    {
-        public NavLink() { }
-        public void Configure(Microsoft.AspNetCore.Components.RenderHandle renderHandle) { }
-        public void Dispose() { }
-        public System.Threading.Tasks.Task SetParametersAsync(Microsoft.AspNetCore.Components.ParameterCollection parameters) { throw null; }
-    }
     public enum NavLinkMatch
     {
         All = 1,
         Prefix = 0,
-    }
-    public partial class Router : Microsoft.AspNetCore.Components.IComponent, System.IDisposable
-    {
-        public Router() { }
-        public void Configure(Microsoft.AspNetCore.Components.RenderHandle renderHandle) { }
-        public void Dispose() { }
-        protected virtual void Render(Microsoft.AspNetCore.Components.RenderTree.RenderTreeBuilder builder, System.Type handler, System.Collections.Generic.IDictionary<string, object> parameters) { }
-        public System.Threading.Tasks.Task SetParametersAsync(Microsoft.AspNetCore.Components.ParameterCollection parameters) { throw null; }
     }
 }
 namespace Microsoft.AspNetCore.Components.Services

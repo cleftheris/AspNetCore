@@ -3,3 +3,14 @@ T:Microsoft.AspNetCore.Components.RenderTree.RenderTreeFrame
 # Manually implemented - https://github.com/dotnet/arcade/issues/2066
 T:Microsoft.AspNetCore.Mvc.ApplicationModels.PageParameterModel
 T:Microsoft.AspNetCore.Mvc.ApplicationModels.PagePropertyModel
+# Manually implemented - https://github.com/aspnet/AspNetCore/issues/8825
+T:Microsoft.AspNetCore.Components.CascadingValue`1
+T:Microsoft.AspNetCore.Components.EditForm
+T:Microsoft.AspNetCore.Components.InputBase`1
+T:Microsoft.AspNetCore.Components.InputDate`1
+T:Microsoft.AspNetCore.Components.InputNumber`1
+T:Microsoft.AspNetCore.Components.InputSelect`1
+T:Microsoft.AspNetCore.Components.ValidationMessage`1
+T:Microsoft.AspNetCore.Components.Layouts.LayoutDisplay
+T:Microsoft.AspNetCore.Components.Routing.NavLink
+T:Microsoft.AspNetCore.Components.Routing.Router
